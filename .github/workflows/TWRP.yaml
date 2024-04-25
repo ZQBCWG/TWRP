@@ -35,6 +35,8 @@ jobs:
 
     - name: Initialize TWRP repository
       run: |
+        curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/bin/repo
+        chmod a+x /usr/bin/repo
         mkdir twrp && cd twrp
         repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
         repo sync

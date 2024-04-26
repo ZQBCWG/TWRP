@@ -36,7 +36,7 @@ jobs:
     - name: Initialize TWRP repository
       run: |
         mkdir twrp && cd twrp
-        gh repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
+        gh repo init https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
         gh repo sync
 
     - name: Prepare device tree

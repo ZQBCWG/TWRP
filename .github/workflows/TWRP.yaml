@@ -26,8 +26,8 @@ jobs:
 
     - name: Configure git and repo
       run: |
-        git config --global user.name "Your Name"
-        git config --global user.email "youremail@example.com"
+        git config --global user.name "Name"
+        git config --global user.email "email@example.com"
         mkdir ~/bin
         PATH=~/bin:$PATH
         curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
@@ -36,8 +36,8 @@ jobs:
     - name: Initialize TWRP repository
       run: |
         mkdir twrp && cd twrp
-        gh repo init https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
-        gh repo sync
+        ~/bin/repo init https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
+        ~/bin/repo sync
 
     - name: Prepare device tree
       run: |

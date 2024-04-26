@@ -35,16 +35,14 @@ jobs:
 
     - name: Initialize TWRP repository
       run: |
-        curl https://storage.googleapis.com/git-repo-downloads/repo > $(pwd)/repo
-        chmod a+x $(pwd)/repo
         mkdir twrp && cd twrp
-        $(pwd)/repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
-        $(pwd)/repo sync
+        gh repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
+        gh repo sync
 
     - name: Prepare device tree
       run: |
         # 这里需要您提供设备的源代码树路径
-        git clone https://dumps.tadiphone.dev/dumps/redmi/opal.git
+        git clone https://github.com/twrpdtgen/android_device_xiaomi_opal.git
 
     - name: Build TWRP image
       run: |
@@ -52,9 +50,12 @@ jobs:
         lunch omni_codename-eng
         mka recoveryimage
 
+    - name: LFT
+      run: ls -lhsa
+
     - name: Upload TWRP image
       uses: actions/upload-artifact@v2
       with:
         name: twrp-image
-        path: out/target/product/codename/recovery.img
+        path: opal/recovery.img
         

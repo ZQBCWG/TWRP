@@ -19,6 +19,19 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
 
+    - name: Free disk space
+      run: |
+        dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n | tail -n 100
+        df -h
+        sudo apt-get remove -y '^ghc-8.*'
+        sudo apt-get remove -y '^dotnet-.*'
+        sudo apt-get remove -y 'php.*'
+        sudo apt-get remove -y azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell mono-devel
+        sudo apt-get autoremove -y
+        sudo apt-get clean
+        df -h
+        rm -rf /usr/share/dotnet/
+        df -h
     - name: Install Dependencies
       run: |
         sudo apt-get update

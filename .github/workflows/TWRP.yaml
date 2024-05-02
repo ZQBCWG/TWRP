@@ -49,7 +49,7 @@ jobs:
       run: |
         mkdir twrp && cd twrp
         ~/bin/repo init https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
-        ~/bin/repo sync
+       # ~/bin/repo sync
 
     - name: Prepare device tree
       run: |

@@ -53,13 +53,13 @@ jobs:
         ~/bin/repo init https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
        # ~/bin/repo sync
     - name: LFT
-      run: ls -lhsa
+      run: ls -lhsa twrp
     - name: Prepare device tree
       run: |
         # 这里需要您提供设备的源代码树路径
         git clone https://github.com/twrpdtgen/android_device_xiaomi_opal.git
     - name: LFT
-      run: ls -lhsa
+      run: ls -lhsa android_device_xiaomi_opal
     - name: Build TWRP image
       run: |
         . build/envsetup.sh
